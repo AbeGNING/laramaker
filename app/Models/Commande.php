@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Menu;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +33,11 @@ class Commande extends Model
     public function getKeyType()
     {
         return 'string';
+    }
+    
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
     }
     
 }

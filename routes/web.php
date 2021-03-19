@@ -8,8 +8,9 @@ use App\Http\Controllers\CommandeController;
 
 
 
-Route::get('/',                     [MainController::class, 'accueil'])->name('accueil');
-Route::get('passer-commande',       [MainController::class, 'smaker'])->name('smaker');
+Route::get('/',                             [MainController::class, 'accueil'])->name('accueil');
+Route::get('passer-commande',               [MainController::class, 'smaker'])->name('smaker');
+Route::get('commande-ajout/{menu}',         [MainController::class, 'ajCommande'])->name('commande.ajout');
 
 
 
