@@ -30,4 +30,10 @@ class MainController extends Controller
         ]);
         return redirect()->route('smaker')->with('statut', 'Votre commande a bien été passé avec succes !');
     }
+
+    public function delCommande(Commande $commande){
+        $commande->delete();
+        return redirect()->route('smaker')->with('statut', 'La commande <b>'.$commande->menu->titre.'</b> a été annulée !');
+    }
+
 }

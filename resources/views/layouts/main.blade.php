@@ -9,6 +9,7 @@
     <meta name="author" content="Abraham GNING">
     <meta name="description" content="Bien commencer avec Laravel à Switch Maker">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
