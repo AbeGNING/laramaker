@@ -10,6 +10,9 @@
             <div class="flex flex-wrap overflow-hidden md:-mx-1 lg:-mx-1">
 
                 <div class="w-full overflow-hidden md:my-1 md:px-1 md:w-2/4 lg:my-1 lg:px-1 lg:w-2/4">
+
+                    <x-notification />
+
                     <div class="bg-white shadow rounded-none sm:rounded-lg overflow-hidden">
                         <div class="p-6">
                             <div

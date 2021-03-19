@@ -1,7 +1,7 @@
 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
 @if (Route::current()->getName() === 'menu.create')
-    <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+    <form  action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
 @else
     <form  method="POST" action="{{ route('menu.update', $menu) }}" enctype="multipart/form-data"> 
         {{ method_field('PUT') }}

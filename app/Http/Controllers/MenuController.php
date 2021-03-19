@@ -22,7 +22,9 @@ class MenuController extends Controller
     {
         return view('pages/backoffice/menu/create', [
           'menu'        => new Menu,
-          'required'    => 'required'
+          'required'    => 'required',
+          'titrePage'   => 'Nouveau Menu',
+          'descPage'    => 'Ajouter un nouveau menu commandable depuis la plateforme c\'est simple et pas compliqué',
         ]);
     }
 
@@ -44,7 +46,7 @@ class MenuController extends Controller
             'image'       => $request->file('image')->store('menus')
         ]);
         
-        return redirect()->route('menu.show', ['menu' => $menu]);
+        return redirect()->route('menu.show', ['menu' => $menu])->with('statut', 'Votre enregistrement a bien été pris en compte !');
     }
 
       public function show(Menu $menu)
@@ -55,8 +57,10 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         return view('pages.backoffice.menu.create', [
-            'menu'      => $menu,
-            'required'  => ''
+            'menu'          => $menu,
+            'required'      => '',
+            'titrePage'     => $menu->titre,
+           'descPage'       => 'Veuillez mettre a jour les informations de ce enregistrement',
         ]);
     }
 
@@ -75,12 +79,12 @@ class MenuController extends Controller
         $menu->prix         = $request->prix;
         $menu->image        = $request->hasFile('image') ? $request->file('image')->store('menus') : $menu->image ;
         $menu->save();
-        return redirect()->route('menu.show', ['menu' => $menu])->with('statut', 'Mise a jour');
+        return redirect()->route('menu.show', ['menu' => $menu])->with('statut', 'Votre modification a été bien prise en compte !');
     }
 
     public function destroy(Menu $menu)
     {
         $menu->delete();
-        return redirect()->route('dashboard')->with('Le menu a été supprimé avec succès !');
+        return redirect()->route('dashboard')->with('statut', 'Le menu a été supprimé avec succès !');
     }
 }

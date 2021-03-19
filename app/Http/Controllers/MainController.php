@@ -14,6 +14,6 @@ class MainController extends Controller
 
     public function smaker()
     {
-        return  view('pages.fronoffice.smaker');
+        return  view('pages.frontoffice.smaker');
     }
 }

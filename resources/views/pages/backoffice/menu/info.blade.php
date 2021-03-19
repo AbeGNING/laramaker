@@ -11,22 +11,7 @@
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 md:col-span-4">
 
-                    @if (session('statut'))
-                        <div x-data="{ show: true }" x-show="show" class="flex justify-between items-center mb-5 relative text-green-700 py-2 px-3 rounded-lg border bg-green-200 shadow-sm">
-                            <div class="flex">
-                                <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                                </svg>   
-                                {{ session('statut') }}
-                            </div>
-                            <div>
-                                <button type="button" @click="show = false" class=" text-green-700">
-                                    <span class="text-2xl mr-2">&times;</span>
-                                </button>
-                            </div>
-                        </div>
-                    @endif
-
+                    <x-notification />
        
                     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                         <div class="px-4 py-5 sm:px-6">
@@ -100,19 +85,29 @@
                             Edition
                         </a>
                       </div>
-                      <div class="ml-3 inline-flex rounded-md shadow">
-                          <a href="{{ route('menu.destroy', $menu) }}" class="inline-flex items-center justify-center border border-transparent text-sm rounded-md text-white bg-blue-600 hover:bg-blue-700 px-3 py-2 focus:ring-4 focus:ring-offset-blue-500">
-                            <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>      
-                            Supression
-                            </a>
-
-                            {{-- <form action="{{ route('menu.destroy', $menu) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button class="">Confirmer</button>
-                            </form> --}}
+                      <div class="ml-3 inline-flex">
+                            <div class="flex" x-data="{ open: false }">
+                                <button @click="open = true" class="inline-flex items-center justify-center border border-transparent text-sm rounded-md text-white bg-blue-600 hover:bg-blue-700 px-3 py-2 focus:ring-4 focus:ring-offset-blue-500 mr-3 shadow">
+                                    <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>      
+                                </button>
+                            
+                                
+                                <div x-show="open" @click.away="open = false">
+                                    <form action="{{ route('menu.destroy', $menu) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="inline-flex items-center justify-center border border-transparent text-sm rounded-md text-white bg-red-600 hover:bg-red-700 px-3 py-2 focus:ring-4 focus:ring-offset-red-500">
+                                            <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>      
+                                            Confirmer
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>  
+                           
                       </div>
                 </div>
               </div>
