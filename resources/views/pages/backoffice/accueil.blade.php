@@ -47,7 +47,7 @@
 
                     <div class="ml-5 mr-5 md:mr-0 mt-10 md:mt-0">
                         <div class="max-w-md mx-auto border rounded-xl overflow-hidden md:max-w-2xl hover:bg-white hover:shadow-md hover:border-0">
-                            <a href="">
+                            <a href="{{ route('menu.show', $choixdujour) }}">
                                 <div class="md:flex">
                                     <div class="md:flex-shrink-0">
                                         <img class="h-48 w-full object-cover md:w-48" src="{{ asset('storage/'.$choixdujour->image) }}" alt="{{ $choixdujour->titre }}">

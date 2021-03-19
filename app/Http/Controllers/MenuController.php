@@ -15,7 +15,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        //
+        
     }
 
     public function create()
@@ -44,7 +44,7 @@ class MenuController extends Controller
             'image'       => $request->file('image')->store('menus')
         ]);
         
-        return view('pages.backoffice.menu.info', ['menu' => $menu]);
+        return redirect()->route('menu.show', ['menu' => $menu]);
     }
 
       public function show(Menu $menu)
@@ -68,19 +68,19 @@ class MenuController extends Controller
             'ingredients' => 'required|string|min:2',
             'prix'        => 'required|string|min:2',
         ]);
-
-        $menu = Menu::create([
-            'titre'       => $request->titre,
-            'description' => $request->description,
-            'ingredients' => $request->ingredients,
-            'prix'        => $request->prix,
-            // 'image'       => $request->file('image')->store('menus')
-        ]);
         
+        $menu->titre        = $request->titre;
+        $menu->description  = $request->description;
+        $menu->ingredients  = $request->ingredients;
+        $menu->prix         = $request->prix;
+        $menu->image        = $request->hasFile('image') ? $request->file('image')->store('menus') : $menu->image ;
+        $menu->save();
+        return redirect()->route('menu.show', ['menu' => $menu])->with('statut', 'Mise a jour');
     }
 
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+        return redirect()->route('dashboard')->with('Le menu a été supprimé avec succès !');
     }
 }
