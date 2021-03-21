@@ -19,7 +19,7 @@ class MainController extends Controller
     {
         return  view('pages.frontoffice.smaker', [
             'menus'     => Menu::paginate(10),
-            'commandes' => Commande::where('user_id', Auth::user()->id)->get()
+            'commandes' => Auth::user() ? Commande::where('user_id', Auth::user()->id)->get() : Commande::all()
         ]);
     }
 

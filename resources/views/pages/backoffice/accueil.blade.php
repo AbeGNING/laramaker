@@ -75,7 +75,7 @@
                                 </h2>
                                 <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
                                     <div class="inline-flex rounded-md shadow">
-                                        <a href="{{ route('commande.create') }}"
+                                        <a href="{{ route('smaker') }}"
                                             class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-offset-blue-400">
                                            Commandez
                                         </a>

@@ -9,7 +9,7 @@
                     </li>
                     @auth
                         <li class="mr-2">
-                            <a class="inline-block py-2 px-2 text-gray-300 no-underline hover:no-underline" href="{{ url('/home') }}">Tableau de bord</a>
+                            <a class="inline-block py-2 px-2 text-gray-300 no-underline hover:no-underline" href="{{ route('dashboard') }}">Tableau de bord</a>
                         </li>
                     @else    
                         <li class="mr-2">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commande;
 use App\Models\Menu;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -84,7 +85,11 @@ class MenuController extends Controller
 
     public function destroy(Menu $menu)
     {
-        $menu->delete();
-        return redirect()->route('dashboard')->with('statut', 'Le menu a été supprimé avec succès !');
+        if (Commande::where('menu_id', $menu->id)->get()->count() > 0) {
+            return redirect()->route('menu.show', $menu)->with('statut', 'Impossible de supprimer ce menu ! Des commandes déja actives y    dépendent !');    
+        } else {
+            $menu->delete();
+            return redirect()->route('dashboard')->with('statut', 'Le menu a été supprimé avec succès !');    
+        }
     }
 }

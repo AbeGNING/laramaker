@@ -21,9 +21,8 @@ class CommandeController extends Controller
 
      public function create()
     {
-        $a = Auth::user();
-        // $a->notify(new TestMail);
-        // return view('pages.backoffice.commande.create');
+        // Auth::user()->notify(new TestMail);
+        return view('pages.backoffice.commande.create');
     }
 
     public function store(Request $request)
