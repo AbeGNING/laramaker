@@ -26,7 +26,7 @@ class MenuFactory extends Factory
             'titre'         => $this->faker->realText($maxNbChars = 50, $indexSize = 2),
             'description'   => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
             'ingredients'   => $this->faker->realText($maxNbChars = 100, $indexSize = 2),
-            'image'         =>  'menus/'.$this->faker->file($sourceDir = 'C:\Mets', $targetDir = 'C:\laragon\www\laramaker\storage\app\public\menus', false),
+            'image'         => 'menus/'.$this->faker->file($sourceDir = 'C:\Mets', $targetDir = 'C:\laragon\www\laramaker\storage\app\public\menus', false),
             'prix'          => $this->faker->numberBetween($min = 1000, $max = 9000),
         ];
     }

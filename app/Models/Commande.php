@@ -40,4 +40,8 @@ class Commande extends Model
         return $this->belongsTo(Menu::class);
     }
     
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'foreign_key', 'other_key');
+    }
 }
